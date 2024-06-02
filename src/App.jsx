@@ -73,12 +73,12 @@ function App() {
   return (
     < >
     <Navbar/> 
-       <div className="mx-3 md:container md:mx-auto my-3 rounded-xl p-4 bg-violet-100 min-h-[80vh] md:w-[40%]">
+       <div className="mx-3 md:container md:mx-auto my-3 rounded-xl p-4 bg-violet-100 min-h-[80vh] md:w-[70%]">
         <h1 className='text-2xl font-bold text-center'>iTask - Manage your todos at one place</h1>
         <div className="addTodo my-4 flex flex-col gap-3">
-          <h2 className='text-lg font-bold'>Add a Todo</h2>
-          <div className="flex">
-            <input onChange={handleChange} value={todo} type="text" className='w-full rounded-full px-3 py-1' />
+          <h2 className='text-lg font-bold text-center'>Add a Todo</h2>
+          <div className="flex justify-center">
+            <input onChange={handleChange} value={todo} type="text" className='w-[65%] rounded-full px-3 py-1' />
             <button onClick={handleAdd} disabled= {todo.length < 3} className='bg-violet-900 mx-2 rounded-full hover:bg-violet-950 disabled:bg-violet-500 p-2 py-2 text-sm font-bold text-white'>Save</button>
           </div>
         </div>
@@ -90,11 +90,15 @@ function App() {
           {todos.length === 0 && <div className='m-3'>No Todos to display</div>}
 
           {todos.map(item=>{
-            return (showFinished || !item.isCompleted) && <div key={item.id} className={'todo flex justify-between  my-2 '}>
-              <div className='flex justify-start gap-4'>
+            return (showFinished || !item.isCompleted) && 
+
+           
+            <div key={item.id} className={'todo flex justify-between   my-2 '}>
+
+              <div className='flex  gap-4'>
               <input type="checkbox" onChange={handleCheckbox} name={item.id} checked={item.isCompleted} id="" />
               <div className={item.isCompleted?"line-through":""}>
-                <p className='text-wrap'>{item.todo}</p>
+                <p className='text-wrap '>{item.todo}</p>
               </div>
               </div>
               <div className="buttons flex h-full">
@@ -102,6 +106,7 @@ function App() {
                 <button onClick={(e)=>{handleDelete(e,item.id)}} className='bg-violet-800 mx-1 rounded-full hover:bg-violet-950 disabled:bg-violet-500 p-2 py-2 text-sm font-bold text-white'><AiFillDelete/></button>
               </div>
             </div>
+            
           })}
         </div>
        </div>
